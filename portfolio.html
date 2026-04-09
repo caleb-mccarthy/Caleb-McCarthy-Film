@@ -35,7 +35,6 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .film-card:hover .play-btn{opacity:1}
 .film-logline{font-family:'Courier Prime',monospace;font-style:italic;font-size:.75rem;letter-spacing:.06em;color:#999;margin-bottom:.5rem}
 .film-title{font-family:'Special Elite',cursive;font-size:1.6rem;letter-spacing:.06em;color:var(--w);margin-bottom:.5rem}
-.film-desc{font-family:'Courier Prime',monospace;font-size:.75rem;line-height:1.8;color:#777;max-width:40ch}
 
 /* OTHER WORK */
 .other-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2.5rem}
@@ -82,7 +81,6 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
       </div>
       <div class="film-logline">We all have a vice</div>
       <div class="film-title">Huff</div>
-      <div class="film-desc">A desperate man spirals into a chase to recover his stolen fix, stumbling into an office world filled with scrutiny, uniformity, and oppressive compulsions.</div>
     </div>
 
     <div class="film-card" onclick="openModal('lovelight')">
@@ -92,17 +90,24 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
       </div>
       <div class="film-logline">What are you willing to trade?</div>
       <div class="film-title">Lovelight</div>
-      <div class="film-desc">A surreal horror short film following a desperate actor in a broken home with a broken leg. He spirals into delusions that cross the line between reality and the mind.</div>
     </div>
 
-    <div class="film-card" onclick="openModal('noreturn')" style="grid-column:1/2">
+    <div class="film-card" onclick="openModal('noreturn')">
       <div class="film-thumb">
         <img src="images/films/No_Return.JPG" alt="No Return">
         <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       </div>
       <div class="film-logline">The One Thing You Can't Escape</div>
       <div class="film-title">No Return</div>
-      <div class="film-desc">An individual finds themself in a maze of interconnected liminal spaces. As they figure their way through, they begin to understand the gravity of their situation.</div>
+    </div>
+
+    <div class="film-card" onclick="openModal('manwithnoname')">
+      <div class="film-thumb">
+        <img src="images/films/Man_with_no_name.png" alt="The Assassination of the Man With No Name">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+      </div>
+      <div class="film-logline">Coming soon</div>
+      <div class="film-title">The Assassination of the Man With No Name</div>
     </div>
 
   </div>
@@ -183,6 +188,13 @@ const films={
     desc:'An individual finds themself in a maze of interconnected liminal spaces. As they figure their way through, they begin to understand the gravity of their situation.',
     url:'https://player.vimeo.com/video/1172027654?h=1cedaed3ad&color=ffffff',
     bts:[]
+  },
+  manwithnoname:{
+    title:'The Assassination of the Man With No Name',
+    logline:'Coming soon',
+    desc:'',
+    url:'',
+    bts:[]
   }
 };
 
@@ -191,7 +203,13 @@ function openModal(id){
   document.getElementById('mt').textContent=f.title;
   document.getElementById('ml').textContent=f.logline;
   document.getElementById('md').textContent=f.desc;
-  document.getElementById('mv').innerHTML=`<iframe src="${f.url}" allow="fullscreen;picture-in-picture" allowfullscreen></iframe>`;
+  if(f.url){
+    document.getElementById('mv').innerHTML=`<iframe src="${f.url}" allow="fullscreen;picture-in-picture" allowfullscreen></iframe>`;
+    document.getElementById('mv').style.display='block';
+  } else {
+    document.getElementById('mv').innerHTML='';
+    document.getElementById('mv').style.display='none';
+  }
   const btsBox=document.getElementById('bts');
   const btsSec=document.getElementById('bts-section');
   if(f.bts&&f.bts.length>0){
@@ -206,6 +224,7 @@ function openModal(id){
 function closeModal(){
   document.getElementById('modal').classList.remove('open');
   document.getElementById('mv').innerHTML='';
+  document.getElementById('mv').style.display='block';
   document.body.style.overflow='';
 }
 function closeOut(e){if(e.target===document.getElementById('modal'))closeModal();}
