@@ -33,18 +33,19 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;background:rgba(0,0,0,.25)}
 .play-btn svg{width:44px;height:44px;fill:var(--w)}
 .film-card:hover .play-btn{opacity:1}
-.film-logline{font-family:'Courier Prime',monospace;font-style:italic;font-size:.7rem;letter-spacing:.06em;color:var(--g);margin-bottom:.5rem}
+.film-logline{font-family:'Courier Prime',monospace;font-style:italic;font-size:.75rem;letter-spacing:.06em;color:#999;margin-bottom:.5rem}
 .film-title{font-family:'Special Elite',cursive;font-size:1.6rem;letter-spacing:.06em;color:var(--w);margin-bottom:.5rem}
-.film-desc{font-family:'Courier Prime',monospace;font-size:.68rem;line-height:1.8;color:#555;max-width:40ch}
+.film-desc{font-family:'Courier Prime',monospace;font-size:.75rem;line-height:1.8;color:#777;max-width:40ch}
 
 /* OTHER WORK */
 .other-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2.5rem}
-.other-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;background:#0f0f0f;margin-bottom:.8rem}
-.other-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);display:block;transition:filter .5s}
-.other-card:hover .other-thumb img{filter:grayscale(0%)}
-.other-title{font-family:'Special Elite',cursive;font-size:1.2rem;letter-spacing:.06em;color:var(--w);margin-bottom:.25rem}
-.other-credit{font-family:'Courier Prime',monospace;font-size:.6rem;letter-spacing:.2em;color:#333;text-transform:uppercase;margin-bottom:.15rem}
-.other-role{font-family:'Courier Prime',monospace;font-size:.6rem;letter-spacing:.15em;color:#555;text-transform:uppercase}
+.other-card{display:flex;flex-direction:column}
+.other-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;background:#0f0f0f;margin-bottom:.8rem;flex-shrink:0}
+.other-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);display:block;transition:filter .5s,transform .5s}
+.other-card:hover .other-thumb img{filter:grayscale(0%);transform:scale(1.03)}
+.other-title{font-family:'Special Elite',cursive;font-size:1.2rem;letter-spacing:.06em;color:var(--w);margin-bottom:.3rem}
+.other-credit{font-family:'Courier Prime',monospace;font-size:.7rem;letter-spacing:.2em;color:#666;text-transform:uppercase;margin-bottom:.2rem}
+.other-role{font-family:'Courier Prime',monospace;font-size:.7rem;letter-spacing:.15em;color:#888;text-transform:uppercase}
 
 /* MODAL */
 .modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.97);display:none;align-items:flex-start;justify-content:center;padding:2rem;overflow-y:auto}
@@ -107,15 +108,13 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
   </div>
 
   <div class="sec-label">Other Work</div>
-   <div class="other-card">
-      <div class="other-thumb">
-      <div class="other-thumb"><img src="images/films/Remnatae.png" alt="Remnate"></div> 
-      </div>
+  <div class="other-grid">
+    <div class="other-card">
+      <div class="other-thumb"><img src="images/films/Remnatae.png" alt="Remnant"></div>
       <div class="other-title">Remnant</div>
       <div class="other-credit">Dir. Sara Ortega</div>
       <div class="other-role">Director of Photography</div>
     </div>
-  <div class="other-grid">
     <div class="other-card">
       <div class="other-thumb"><img src="images/other/Powered_by_love.jpg" alt="Powered by Love"></div>
       <div class="other-title">Powered by Love</div>
