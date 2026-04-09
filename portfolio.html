@@ -33,6 +33,9 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;background:rgba(0,0,0,.25)}
 .play-btn svg{width:44px;height:44px;fill:var(--w)}
 .film-card:hover .play-btn{opacity:1}
+.coming-soon-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0);font-family:'Courier Prime',monospace;font-size:.8rem;letter-spacing:.4em;color:transparent;text-transform:uppercase;transition:background .4s,color .4s;pointer-events:none}
+.coming-soon-card:hover .coming-soon-overlay{background:rgba(0,0,0,.65);color:var(--w)}
+.coming-soon-card:hover .film-thumb img{filter:grayscale(0%);transform:scale(1.04)}
 .film-logline{font-family:'Courier Prime',monospace;font-style:italic;font-size:.75rem;letter-spacing:.06em;color:#999;margin-bottom:.5rem}
 .film-title{font-family:'Special Elite',cursive;font-size:1.6rem;letter-spacing:.06em;color:var(--w);margin-bottom:.5rem}
 
