@@ -29,9 +29,21 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .film-desc{font-family:'Courier Prime',monospace;font-size:.91rem;line-height:1.9;color:#666}
 .section-label{font-family:'Courier Prime',monospace;font-size:.72rem;letter-spacing:.4em;color:#3a3a3a;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:1.2rem}
 .section-label::after{content:'';flex:1;height:1px;background:#161616}
-.bts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
-.bts-grid img{width:100%;height:220px;object-fit:cover;display:block;filter:grayscale(100%);transition:filter .5s,transform .5s}
+.bts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.bts-grid img{width:100%;height:180px;object-fit:cover;display:block;filter:grayscale(100%);transition:filter .5s,transform .5s;cursor:pointer}
 .bts-grid img:hover{filter:grayscale(0%);transform:scale(1.02)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox-img{max-width:90vw;max-height:85vh;object-fit:contain;display:block}
+.lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid #333;color:#aaa;font-family:'Courier Prime',monospace;font-size:.8rem;letter-spacing:.2em;cursor:pointer;padding:.4rem 1rem;transition:color .3s,border-color .3s}
+.lightbox-close:hover{color:var(--w);border-color:var(--w)}
+.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:#555;font-size:2.5rem;cursor:pointer;padding:1rem;transition:color .3s;line-height:1}
+.lightbox-prev{left:1rem}
+.lightbox-next{right:1rem}
+.lightbox-prev:hover,.lightbox-next:hover{color:var(--w)}
+.lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:'Courier Prime',monospace;font-size:.65rem;letter-spacing:.3em;color:#444}
 .footer{text-align:center;padding:2rem;font-family:'Courier Prime',monospace;font-size:.55rem;letter-spacing:.25em;color:#1a1a1a;text-transform:uppercase}
 </style>
 </head>
@@ -55,12 +67,29 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 
   <div class="section-label">Behind the Scenes</div>
   <div class="bts-grid">
-    <img src="images/BTS/AliLaithcalebmccarthylovelight.jpg" alt="BTS">
-    <img src="images/BTS/LovelightCaleb.jpg" alt="BTS">
-    <img src="images/BTS/Lovelightcostume.jpg" alt="BTS">
-    <img src="images/BTS/LovelightMakkandcaleb.jpg" alt="BTS">
-  </div>
+  <img src="images/BTS/AliLaithcalebmccarthylovelight.jpg" alt="BTS" onclick="openLightbox(0)">
+  <img src="images/BTS/LovelightCaleb.jpg" alt="BTS" onclick="openLightbox(1)">
+  <img src="images/BTS/Lovelightcostume.jpg" alt="BTS" onclick="openLightbox(2)">
+  <img src="images/BTS/LovelightMakkandcaleb.jpg" alt="BTS" onclick="openLightbox(3)">
+</div>
 </div>
 <div class="footer">Caleb McCarthy &mdash; Filmmaker</div>
+  <div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715; close</button>
+  <button class="lightbox-prev" onclick="changeImage(-1)">&#8592;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="changeImage(1)">&#8594;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+<script>
+const images=['images/BTS/AliLaithcalebmccarthylovelight.jpg','images/BTS/LovelightCaleb.jpg','images/BTS/Lovelightcostume.jpg','images/BTS/LovelightMakkandcaleb.jpg'];
+let current=0;
+function openLightbox(i){current=i;update();document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+function changeImage(dir){current=(current+dir+images.length)%images.length;update();}
+function update(){document.getElementById('lightbox-img').src=images[current];document.getElementById('lightbox-counter').textContent=(current+1)+' / '+images.length;}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')changeImage(-1);if(e.key==='ArrowRight')changeImage(1);});
+</script>
 </body>
 </html>
