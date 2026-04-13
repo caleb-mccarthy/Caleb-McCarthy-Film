@@ -19,18 +19,16 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .page-title{font-family:'Special Elite',cursive;font-size:clamp(2rem,6vw,4rem);color:var(--w);letter-spacing:.04em}
 .back-link{font-family:'Special Elite',cursive;font-size:1.35rem;letter-spacing:.1em;color:#aaa;text-decoration:none;margin-left:auto;transition:color .3s}
 .back-link:hover{color:#fff}
-.sec-label{font-family:'Courier Prime',monospace;font-size:.90rem;letter-spacing:.4em;color:#3a3a3a;text-transform:uppercase;margin-bottom:2.5rem;display:flex;align-items:center;gap:1.2rem}
+.sec-label{font-family:'Courier Prime',monospace;font-size:.72rem;letter-spacing:.4em;color:#3a3a3a;text-transform:uppercase;margin-bottom:2.5rem;display:flex;align-items:center;gap:1.2rem}
 .sec-label::after{content:'';flex:1;height:1px;background:#161616}
 .footer{text-align:center;padding:2rem;font-family:'Courier Prime',monospace;font-size:.55rem;letter-spacing:.25em;color:#1a1a1a;text-transform:uppercase}
 
-/* FILM GRID */
+/* FILM GRID - DIRECTING */
 .films-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem 2.5rem;margin-bottom:6rem}
 .film-card{cursor:pointer}
 .film-thumb{width:100%;aspect-ratio:16/9;background:#0f0f0f;overflow:hidden;position:relative;margin-bottom:1.1rem}
 .film-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:filter .5s,transform .6s;display:block}
 .film-card:hover .film-thumb img{filter:grayscale(0%);transform:scale(1.04)}
-.film-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Courier Prime',monospace;font-size:.7rem;letter-spacing:.4em;color:#444;border:1px solid #222}
-
 .film-logline{font-family:'Courier Prime',monospace;font-style:italic;font-size:.75rem;letter-spacing:.06em;color:#999;margin-bottom:.5rem}
 .film-title{font-family:'Special Elite',cursive;font-size:1.6rem;letter-spacing:.06em;color:var(--w);margin-bottom:.5rem}
 
@@ -39,15 +37,53 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .coming-soon-card:hover .coming-soon-overlay{background:rgba(0,0,0,.65);color:var(--w)}
 .coming-soon-card:hover .film-thumb img{filter:grayscale(0%);transform:scale(1.04)}
 
-/* OTHER WORK */
-.other-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2.5rem}
-.other-card{display:flex;flex-direction:column}
+/* OTHER WORK GRID */
+.other-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2.5rem;margin-bottom:6rem}
+.other-card{display:flex;flex-direction:column;cursor:pointer}
 .other-thumb{width:100%;aspect-ratio:16/9;overflow:hidden;background:#0f0f0f;margin-bottom:.8rem;flex-shrink:0}
 .other-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);display:block;transition:filter .5s,transform .5s}
 .other-card:hover .other-thumb img{filter:grayscale(0%);transform:scale(1.03)}
 .other-title{font-family:'Special Elite',cursive;font-size:1.2rem;letter-spacing:.06em;color:var(--w);margin-bottom:.3rem}
 .other-credit{font-family:'Courier Prime',monospace;font-size:.7rem;letter-spacing:.2em;color:#666;text-transform:uppercase;margin-bottom:.2rem}
 .other-role{font-family:'Courier Prime',monospace;font-size:.7rem;letter-spacing:.15em;color:#888;text-transform:uppercase}
+.other-card-plain{cursor:default}
+.other-card-plain:hover .other-thumb img{filter:grayscale(100%);transform:none}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.97);display:none;align-items:flex-start;justify-content:center;padding:2rem;overflow-y:auto}
+.modal.open{display:flex}
+.modal-inner{width:100%;max-width:1000px;margin:auto;padding-bottom:3rem}
+.modal-close{display:block;margin-left:auto;margin-bottom:1.5rem;background:none;border:1px solid #333;color:#aaa;font-family:'Courier Prime',monospace;font-size:.8rem;letter-spacing:.2em;cursor:pointer;padding:.4rem 1rem;transition:color .3s,border-color .3s}
+.modal-close:hover{color:var(--w);border-color:var(--w)}
+.modal-top{display:grid;grid-template-columns:280px 1fr;gap:2.5rem;margin-bottom:3rem;align-items:start}
+@media(max-width:650px){.modal-top{grid-template-columns:1fr}}
+.modal-poster{width:100%;display:block}
+.modal-poster-link{display:block;overflow:hidden}
+.modal-poster-link img{width:100%;display:block;filter:grayscale(100%);transition:filter .5s}
+.modal-poster-link:hover img{filter:grayscale(0%)}
+.modal-poster-placeholder{width:100%;aspect-ratio:2/3;background:#0f0f0f;display:flex;align-items:center;justify-content:center;font-family:'Courier Prime',monospace;font-size:.65rem;letter-spacing:.3em;color:#333;border:1px solid #1a1a1a}
+.modal-info{display:flex;flex-direction:column;gap:1rem;padding-top:.25rem}
+.modal-title{font-family:'Special Elite',cursive;font-size:2rem;letter-spacing:.06em;color:var(--w);line-height:1.2}
+.modal-meta{font-family:'Courier Prime',monospace;font-size:.7rem;letter-spacing:.25em;color:#555;text-transform:uppercase}
+.modal-meta span{color:#888;margin-left:.5rem}
+.modal-synopsis{font-family:'Courier Prime',monospace;font-size:.78rem;line-height:1.9;color:#666;border-top:1px solid #1a1a1a;padding-top:1rem}
+.modal-section-label{font-family:'Courier Prime',monospace;font-size:.65rem;letter-spacing:.4em;color:#333;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem}
+.modal-section-label::after{content:'';flex:1;height:1px;background:#161616}
+.modal-stills{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin-bottom:3rem}
+.modal-stills img{width:100%;height:160px;object-fit:cover;display:block;filter:grayscale(100%);transition:filter .5s,transform .4s;cursor:pointer}
+.modal-stills img:hover{filter:grayscale(0%);transform:scale(1.02)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.97);display:none;align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox-img{max-width:90vw;max-height:85vh;object-fit:contain;display:block}
+.lightbox-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid #333;color:#aaa;font-family:'Courier Prime',monospace;font-size:.8rem;letter-spacing:.2em;cursor:pointer;padding:.4rem 1rem;transition:color .3s,border-color .3s}
+.lightbox-close:hover{color:var(--w);border-color:var(--w)}
+.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:#555;font-size:2.5rem;cursor:pointer;padding:1rem;transition:color .3s;line-height:1}
+.lightbox-prev{left:1rem}
+.lightbox-next{right:1rem}
+.lightbox-prev:hover,.lightbox-next:hover{color:var(--w)}
+.lightbox-counter{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:'Courier Prime',monospace;font-size:.65rem;letter-spacing:.3em;color:#444}
 </style>
 </head>
 <body>
@@ -57,13 +93,13 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
     <a href="index.html" class="back-link">&#8592; Home</a>
   </div>
 
+  <!-- DIRECTING -->
   <div class="sec-label">Directing</div>
   <div class="films-grid">
 
     <div class="film-card" onclick="window.location='huff.html'">
       <div class="film-thumb">
         <img src="images/films/HUFF_2.jpg" alt="Huff">
-       
       </div>
       <div class="film-logline">We all have a vice</div>
       <div class="film-title">Huff</div>
@@ -72,7 +108,6 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
     <div class="film-card" onclick="window.location='lovelight.html'">
       <div class="film-thumb">
         <img src="images/Lovelight_audance.png" alt="Lovelight">
-      
       </div>
       <div class="film-logline">What are you willing to trade?</div>
       <div class="film-title">Lovelight</div>
@@ -81,7 +116,6 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
     <div class="film-card" onclick="window.location='noreturn.html'">
       <div class="film-thumb">
         <img src="images/films/No_Return.JPG" alt="No Return">
-        
       </div>
       <div class="film-logline">The One Thing You Can't Escape</div>
       <div class="film-title">No Return</div>
@@ -89,7 +123,7 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 
     <div class="film-card coming-soon-card">
       <div class="film-thumb" style="cursor:default">
-        <img src="images/films/Man with no name.png" alt="The Assassination of the Man With No Name">
+        <img src="images/films/Man_with_no_name.png" alt="The Assassination of the Man With No Name">
         <div class="coming-soon-overlay">Coming Soon</div>
       </div>
       <div class="film-logline">Coming soon</div>
@@ -98,42 +132,198 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 
   </div>
 
-  <div class="sec-label">Other Work</div>
+  <!-- DIRECTOR OF PHOTOGRAPHY -->
+  <div class="sec-label">Director of Photography</div>
   <div class="other-grid">
-    <div class="other-card">
-      <div class="other-thumb"><img src="images/films/Remnatae.png" alt="Remnant"></div>
+
+    <div class="other-card" onclick="openModal('remnant')">
+      <div class="other-thumb"><img src="images/posters/Remnantposter.webp" alt="Remnant"></div>
       <div class="other-title">Remnant</div>
       <div class="other-credit">Dir. Sara Ortega</div>
       <div class="other-role">Director of Photography</div>
     </div>
-    <div class="other-card">
+
+    <div class="other-card" onclick="openModal('poweredbylove')">
       <div class="other-thumb"><img src="images/other/Powered_by_love.jpg" alt="Powered by Love"></div>
       <div class="other-title">Powered by Love</div>
       <div class="other-credit">Dir. Sara Ortega</div>
       <div class="other-role">Director of Photography</div>
     </div>
-    <div class="other-card">
+
+    <div class="other-card" onclick="openModal('riffoff')">
       <div class="other-thumb"><img src="images/other/Riff_Off.jpg" alt="Riff Off"></div>
       <div class="other-title">Riff Off</div>
       <div class="other-credit">Dir. Danica Frey</div>
       <div class="other-role">Director of Photography</div>
     </div>
-    <div class="other-card">
-      <a href="https://www.emmadlawrence.com/films/whatsitsbetweenus" target="_blank" style="display:block;text-decoration:none">
-        <div class="other-thumb"><img src="images/other/What_sits_between_us_Caleb_McCarthy.jpg" alt="What Sits Between Us"></div>
-      </a>
+
+  </div>
+
+  <!-- OTHER WORK -->
+  <div class="sec-label">Other Work</div>
+  <div class="other-grid">
+
+    <div class="other-card" onclick="openModal('whatsitsbetweens')">
+      <div class="other-thumb"><img src="images/posters/WSBUposter.jpg" alt="What Sits Between Us"></div>
       <div class="other-title">What Sits Between Us</div>
       <div class="other-credit">Dir. Emma Lawrence</div>
       <div class="other-role">Actor</div>
     </div>
-    <div class="other-card">
+
+    <div class="other-card" onclick="openModal('onsecondthought')">
+      <div class="other-thumb">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Courier Prime',monospace;font-size:.65rem;letter-spacing:.3em;color:#333;border:1px solid #1a1a1a">— coming soon —</div>
+      </div>
+      <div class="other-title">On Second Thought</div>
+      <div class="other-credit">Dir. Colton Younger</div>
+      <div class="other-role">On Set Sound Mixer</div>
+    </div>
+
+    <div class="other-card other-card-plain">
       <div class="other-thumb"><img src="images/other/On_The_Right_Track.JPG" alt="On The Right Track"></div>
       <div class="other-title">On The Right Track</div>
       <div class="other-credit">Dir. Jaimie Lerma &nbsp;·&nbsp; Documentary</div>
       <div class="other-role">Editor</div>
     </div>
+
   </div>
 </div>
 <div class="footer">Caleb McCarthy &mdash; Filmmaker</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeOut(event)">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">&#x2715; close</button>
+    <div class="modal-top">
+      <div id="modal-poster-wrap"></div>
+      <div class="modal-info">
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-meta">Director <span id="modal-director"></span></div>
+        <div class="modal-meta">Role <span id="modal-role"></span></div>
+        <div class="modal-synopsis" id="modal-synopsis"></div>
+      </div>
+    </div>
+    <div id="modal-stills-section" style="display:none">
+      <div class="modal-section-label">Stills &amp; BTS</div>
+      <div class="modal-stills" id="modal-stills"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715; close</button>
+  <button class="lightbox-prev" onclick="changeImage(-1)">&#8592;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="changeImage(1)">&#8594;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<script>
+const films={
+  remnant:{
+    title:'Remnant',
+    director:'Sara Ortega',
+    role:'Director of Photography',
+    synopsis:'A period drama centered around the arranged marriage of Eleanor and Henry that is shaken up when Eleanor\'s old friend William comes back into her life.',
+    website:'https://www.saragortega.com/',
+    poster:'images/posters/Remnantposter.webp',
+    stills:['images/stills/remnant1.jpg','images/stills/remnant2.jpg','images/stills/remnant3.jpg','images/bts/BTSremnant1.jpg','images/bts/BTSremnant2.jpg']
+  },
+  poweredbylove:{
+    title:'Powered by Love',
+    director:'Sara Ortega',
+    role:'Director of Photography',
+    synopsis:'A time traveling love story features an artist and scientist falling for each other.',
+    website:'https://www.saragortega.com/',
+    poster:'images/other/Powered_by_love.jpg',
+    stills:['images/stills/PBL1.jpeg','images/stills/PBL2.jpeg','images/stills/PBL3.jpeg']
+  },
+  riffoff:{
+    title:'Riff Off',
+    director:'Danica Frey',
+    role:'Director of Photography',
+    synopsis:'A young college student named Stacey accidentally summons a magic guitar to battle an evil rock wizard, in an attempt to find a friend to play board games with.',
+    website:'',
+    poster:'images/other/Riff_Off.jpg',
+    stills:['images/stills/riffoff1.jpg','images/stills/riffoff2.jpg','images/stills/riffoff3.jpg']
+  },
+  whatsitsbetweens:{
+    title:'What Sits Between Us',
+    director:'Emma Lawrence',
+    role:'Actor',
+    synopsis:'After pulling into an empty barn, a couple is forced to confront the consequences of infidelity and jealousy.',
+    website:'https://www.emmadlawrence.com/films/whatsitsbetweenus',
+    poster:'images/posters/WSBUposter.jpg',
+    stills:['images/stills/whatsitsbetweenusstill1.jpeg','images/stills/whatsitsbetweenusstill2.jpeg','images/stills/whatsitsbetweenusstill3.jpeg']
+  },
+  onsecondthought:{
+    title:'On Second Thought',
+    director:'Colton Younger',
+    role:'On Set Sound Mixer',
+    synopsis:'A psychological thriller about a younger member of the mafia, who is about to become the newest capo, is initiated by the other capos and the Boss, but they need him for more than what it seems.',
+    website:'',
+    poster:'',
+    stills:['images/bts/onsecondthoughtbts.jpg','images/bts/Ostbts.jpg']
+  }
+};
+
+let currentStills=[];
+let lightboxIndex=0;
+
+function openModal(id){
+  const f=films[id];
+  document.getElementById('modal-title').textContent=f.title;
+  document.getElementById('modal-director').textContent=f.director;
+  document.getElementById('modal-role').textContent=f.role;
+  document.getElementById('modal-synopsis').textContent=f.synopsis;
+
+  const posterWrap=document.getElementById('modal-poster-wrap');
+  if(f.poster){
+    if(f.website){
+      posterWrap.innerHTML=`<a href="${f.website}" target="_blank" class="modal-poster-link"><img src="${f.poster}" alt="${f.title}"></a>`;
+    } else {
+      posterWrap.innerHTML=`<img src="${f.poster}" alt="${f.title}" class="modal-poster">`;
+    }
+  } else {
+    posterWrap.innerHTML=`<div class="modal-poster-placeholder">— poster coming soon —</div>`;
+  }
+
+  const stillsSec=document.getElementById('modal-stills-section');
+  const stillsBox=document.getElementById('modal-stills');
+  if(f.stills&&f.stills.length>0){
+    currentStills=f.stills;
+    stillsBox.innerHTML=f.stills.map((src,i)=>`<img src="${src}" alt="Still" onclick="openLightbox(${i})">`).join('');
+    stillsSec.style.display='block';
+  } else {
+    stillsSec.style.display='none';
+    currentStills=[];
+  }
+
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function closeOut(e){if(e.target===document.getElementById('modal'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();closeModal();}});
+
+function openLightbox(i){
+  lightboxIndex=i;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+function changeImage(dir){lightboxIndex=(lightboxIndex+dir+currentStills.length)%currentStills.length;updateLightbox();}
+function updateLightbox(){
+  document.getElementById('lightbox-img').src=currentStills[lightboxIndex];
+  document.getElementById('lightbox-counter').textContent=(lightboxIndex+1)+' / '+currentStills.length;
+}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+</script>
 </body>
 </html>
