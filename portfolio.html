@@ -69,8 +69,8 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .modal-section-label{font-family:'Courier Prime',monospace;font-size:.65rem;letter-spacing:.4em;color:#333;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem}
 .modal-section-label::after{content:'';flex:1;height:1px;background:#161616}
 .modal-stills{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin-bottom:3rem}
-.modal-stills img{width:100%;height:160px;object-fit:cover;display:block;filter:grayscale(100%);transition:filter .5s,transform .4s;cursor:pointer}
-.modal-stills img:hover{filter:grayscale(0%);transform:scale(1.02)}
+.modal-stills img{width:100%;height:160px;object-fit:cover;display:block;filter:grayscale(0%);transition:transform .4s;cursor:pointer}
+.modal-stills img:hover{transform:scale(1.02)}
 
 /* LIGHTBOX */
 .lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.97);display:none;align-items:center;justify-content:center}
@@ -163,7 +163,7 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
   <div class="other-grid">
 
     <div class="other-card" onclick="openModal('whatsitsbetweens')">
-      <div class="other-thumb"><img src="images/posters/WSBUposter.jpg" alt="What Sits Between Us"></div>
+      <div class="other-thumb"><img src="images/other/What_sits_between_us_Caleb_McCarthy.jpg" alt="What Sits Between Us"></div>
       <div class="other-title">What Sits Between Us</div>
       <div class="other-credit">Dir. Emma Lawrence</div>
       <div class="other-role">Actor</div>
