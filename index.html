@@ -9,14 +9,17 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--w:#f0ece4;--b:#090909;--g:#777}
-html,body{width:100%;height:100%;background:var(--b);color:var(--w);font-family:'Special Elite',cursive;overflow:hidden}
+html,body{width:100%;background:var(--b);color:var(--w);font-family:'Special Elite',cursive}
 body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.045;
 background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 background-size:200px 200px;animation:gr .4s steps(1) infinite}
 @keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-2px,-2px)}50%{transform:translate(2px,1px)}75%{transform:translate(-1px,2px)}100%{transform:translate(0,0)}}
-.home-bg{position:fixed;inset:0;background-image:url('images/Lovelight_audance.png');background-size:cover;background-position:center;filter:grayscale(100%);opacity:.52}
+
+/* HERO */
+.hero{position:relative;width:100%;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.home-bg{position:absolute;inset:0;background-image:url('images/Lovelight_audance.png');background-size:cover;background-position:center;filter:grayscale(100%);opacity:.52}
 .home-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.85) 100%)}
-.home-wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:2.5rem}
 .home-name{font-family:'Special Elite',cursive;font-size:clamp(2rem,6.5vw,5.5rem);line-height:1.1;color:var(--w);letter-spacing:.04em;opacity:0;animation:fu 1.2s ease .2s forwards}
 @keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .home-nav{display:flex;gap:4rem;justify-content:center;opacity:0;animation:fu 1.4s ease .7s forwards}
@@ -24,20 +27,92 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .home-nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--w);transition:width .4s}
 .home-nav a:hover{color:var(--w)}
 .home-nav a:hover::after{width:100%}
-  @media(max-width:600px){
-.home-nav{flex-direction:column;gap:1.5rem;align-items:center}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;font-family:'Courier Prime',monospace;font-size:.6rem;letter-spacing:.4em;color:#333;text-transform:uppercase;animation:bounce 2s ease infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* REEL SECTION */
+.reel-section{width:100%;padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.reel-grid{display:grid;grid-template-columns:1fr 2fr 1fr;gap:2rem;align-items:center}
+
+/* SIDE PANELS */
+.side-panel{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.side-label{font-family:'Courier Prime',monospace;font-size:.65rem;letter-spacing:.4em;color:#555;text-transform:uppercase;transition:color .3s}
+.side-img-wrap{width:100%;overflow:hidden;position:relative}
+.side-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(100%);display:block;transition:filter .5s,transform .5s}
+.side-img-link:hover img{filter:grayscale(0%);transform:scale(1.03)}
+.side-img-link:hover .side-label{color:#aaa}
+.side-img-link{display:flex;flex-direction:column;align-items:center;gap:.8rem;text-decoration:none;width:100%}
+
+/* REEL */
+.reel-wrap{width:100%}
+.reel-video{width:100%;aspect-ratio:16/9;background:#0a0a0a;border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center}
+.reel-video iframe{width:100%;height:100%;border:none;display:block}
+.reel-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.reel-placeholder-icon{width:52px;height:52px;fill:#222}
+.reel-label{font-family:'Courier Prime',monospace;font-size:.65rem;letter-spacing:.4em;color:#222;text-transform:uppercase;text-align:center;margin-top:1.5rem}
+
+.footer{text-align:center;padding:2rem;font-family:'Courier Prime',monospace;font-size:.55rem;letter-spacing:.25em;color:#1a1a1a;text-transform:uppercase}
+
+@media(max-width:600px){
+  .home-nav{flex-direction:column;gap:1.5rem;align-items:center}
+  .reel-grid{grid-template-columns:1fr}
+  .side-img-wrap img{aspect-ratio:16/9}
 }
 </style>
 </head>
 <body>
-<div class="home-bg"></div>
-<div class="home-wrap">
-  <h1 class="home-name">Caleb McCarthy</h1>
-  <nav class="home-nav">
-    <a href="portfolio.html">Portfolio</a>
-    <a href="news.html">News</a>
-    <a href="about.html">About &amp; Contact</a>
-  </nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="home-bg"></div>
+  <div class="hero-content">
+    <h1 class="home-name">Caleb McCarthy</h1>
+    <nav class="home-nav">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About &amp; Contact</a>
+    </nav>
+  </div>
+  <div class="scroll-hint">scroll</div>
 </div>
+
+<!-- REEL + PANELS -->
+<div class="reel-section">
+  <div class="reel-grid">
+
+    <!-- LEFT: Portfolio -->
+    <div class="side-panel">
+      <a href="portfolio.html" class="side-img-link">
+        <div class="side-label">See More</div>
+        <div class="side-img-wrap">
+          <img src="images/films/Man with no Name/EastwoodTN.jpg" alt="Portfolio">
+        </div>
+      </a>
+    </div>
+
+    <!-- CENTER: Reel -->
+    <div class="reel-wrap">
+      <div class="reel-video">
+        <div class="reel-placeholder">
+          <svg class="reel-placeholder-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+      <div class="reel-label">Reel — Coming Soon</div>
+    </div>
+
+    <!-- RIGHT: About -->
+    <div class="side-panel">
+      <a href="about.html" class="side-img-link">
+        <div class="side-label">Learn More</div>
+        <div class="side-img-wrap">
+          <img src="images/BTS/BTSremnant1.jpg" alt="About">
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">Caleb McCarthy &mdash; Filmmaker</div>
 </body>
 </html>
