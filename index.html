@@ -24,6 +24,9 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .home-nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--w);transition:width .4s}
 .home-nav a:hover{color:var(--w)}
 .home-nav a:hover::after{width:100%}
+  @media(max-width:600px){
+.home-nav{flex-direction:column;gap:1.5rem;align-items:center}
+}
 </style>
 </head>
 <body>
