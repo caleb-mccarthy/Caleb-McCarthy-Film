@@ -27,36 +27,35 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .home-nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--w);transition:width .4s}
 .home-nav a:hover{color:var(--w)}
 .home-nav a:hover::after{width:100%}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;font-family:'Courier Prime',monospace;font-size:.6rem;letter-spacing:.4em;color:#777;text-transform:uppercase;animation:bounce 2s ease infinite;transition:opacity .3s ease}@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;font-family:'Courier Prime',monospace;font-size:.6rem;letter-spacing:.4em;color:#777;text-transform:uppercase;animation:bounce 2s ease infinite;transition:opacity .3s ease}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
 /* REEL SECTION */
-.reel-section{width:100%;padding:6rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:1}
-.reel-grid{display:grid;grid-template-columns:1fr 2fr 1fr;gap:2rem;align-items:start}
-.reel-wrap{margin-top:-4rem}
-
-/* SIDE PANELS */
-.side-panel{display:flex;flex-direction:column;align-items:center;gap:.8rem}
-.side-img-link{display:flex;flex-direction:column;align-items:center;gap:.8rem;text-decoration:none;width:100%}
-.side-label{font-family:'Courier Prime',monospace;font-size:.9rem;letter-spacing:.3em;color:#aaa;text-transform:uppercase;transition:color .3s}
-.side-img-wrap{width:100%;overflow:hidden}
-.side-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(100%);display:block;transition:filter .5s,transform .5s}
-.side-img-link:hover img{filter:grayscale(0%);transform:scale(1.03)}
-.side-img-link:hover .side-label{color:#fff}
+.reel-section{width:100%;padding:6rem 2rem 4rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
 
 /* REEL */
-.reel-wrap{width:100%}
+.reel-wrap{width:100%;margin-bottom:2rem}
 .reel-video{width:100%;aspect-ratio:16/9;background:#0a0a0a;border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center}
 .reel-video iframe{width:100%;height:100%;border:none;display:block}
 .reel-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
 .reel-placeholder-icon{width:52px;height:52px;fill:#222}
-.reel-label{font-family:'Courier Prime',monospace;font-size:.9rem;letter-spacing:.3em;color:#aaa;text-transform:uppercase;text-align:center;margin-top:1.5rem}
+.reel-label{font-family:'Courier Prime',monospace;font-size:.9rem;letter-spacing:.3em;color:#aaa;text-transform:uppercase;text-align:center;margin-top:1.2rem}
 
-.footer{text-align:center;padding:2rem;font-family:'Courier Prime',monospace;font-size:.1rem;letter-spacing:.25em;color:#1a1a1a;text-transform:uppercase;position:relative;z-index:1}
+/* PANELS BELOW REEL */
+.panels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.side-panel{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.side-img-link{display:flex;flex-direction:column;align-items:center;gap:.8rem;text-decoration:none;width:100%}
+.side-label{font-family:'Courier Prime',monospace;font-size:.9rem;letter-spacing:.3em;color:#aaa;text-transform:uppercase;transition:color .3s}
+.side-img-wrap{width:100%;overflow:hidden}
+.side-img-wrap img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:grayscale(100%);display:block;transition:filter .5s,transform .5s}
+.side-img-link:hover img{filter:grayscale(0%);transform:scale(1.03)}
+.side-img-link:hover .side-label{color:#fff}
+
+.footer{text-align:center;padding:3rem 2rem;font-family:'Courier Prime',monospace;font-size:.55rem;letter-spacing:.25em;color:#1a1a1a;text-transform:uppercase;position:relative;z-index:1}
 
 @media(max-width:600px){
   .home-nav{flex-direction:column;gap:1.5rem;align-items:center}
-  .reel-grid{grid-template-columns:1fr}
-  .side-img-wrap img{aspect-ratio:16/9}
+  .panels-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -79,9 +78,20 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 
 <!-- REEL + PANELS -->
 <div class="reel-section">
-  <div class="reel-grid">
 
-    <!-- LEFT: Portfolio -->
+  <!-- REEL -->
+  <div class="reel-wrap">
+    <div class="reel-video">
+      <div class="reel-placeholder">
+        <svg class="reel-placeholder-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+    </div>
+    <div class="reel-label">Reel — Coming Soon</div>
+  </div>
+
+  <!-- THREE PANELS -->
+  <div class="panels-grid">
+
     <div class="side-panel">
       <a href="portfolio.html" class="side-img-link">
         <div class="side-label">See More</div>
@@ -91,17 +101,6 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
       </a>
     </div>
 
-    <!-- CENTER: Reel -->
-    <div class="reel-wrap">
-      <div class="reel-video">
-        <div class="reel-placeholder">
-          <svg class="reel-placeholder-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
-      </div>
-      <div class="reel-label">Reel — Coming Soon</div>
-    </div>
-
-    <!-- RIGHT: About -->
     <div class="side-panel">
       <a href="about.html" class="side-img-link">
         <div class="side-label">Learn More</div>
@@ -111,11 +110,21 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
       </a>
     </div>
 
+    <div class="side-panel">
+      <a href="news.html" class="side-img-link">
+        <div class="side-label">Read More</div>
+        <div class="side-img-wrap">
+          <img src="images/news/Caleb_Lost_Coast_Film_Fest.jpg" alt="News">
+        </div>
+      </a>
+    </div>
+
   </div>
 </div>
 
 <div class="footer">Caleb McCarthy &mdash; Filmmaker</div>
- <script>
+
+<script>
 window.addEventListener('scroll', function(){
   const scrolled = window.scrollY;
   const maxScroll = window.innerHeight;
@@ -124,7 +133,6 @@ window.addEventListener('scroll', function(){
   const fadeAmount = Math.max(1 - (scrolled / (maxScroll * 0.3)), 0);
   document.querySelector('.scroll-hint').style.opacity = fadeAmount;
 });
-</script>
 </script>
 </body>
 </html>
