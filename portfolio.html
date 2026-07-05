@@ -71,6 +71,12 @@ background-size:200px 200px;animation:gr .4s steps(1) infinite}
 .modal-stills{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin-bottom:3rem}
 .modal-stills img{width:100%;height:160px;object-fit:cover;display:block;filter:grayscale(0%);transition:transform .4s;cursor:pointer}
 .modal-stills img:hover{transform:scale(1.02)}
+.modal-video-thumb{position:relative;cursor:pointer;overflow:hidden}
+.modal-video-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .4s,transform .4s;filter:grayscale(0%)}
+.modal-video-thumb:hover img{filter:brightness(.6);transform:scale(1.03)}
+.modal-video-thumb .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s}
+.modal-video-thumb:hover .play-overlay{opacity:1}
+.modal-video-thumb .play-overlay svg{width:64px;height:64px;fill:var(--w);filter:drop-shadow(0 0 8px rgba(0,0,0,.8))}
 
 /* LIGHTBOX */
 .lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.97);display:none;align-items:center;justify-content:center}
@@ -265,15 +271,15 @@ const films={
     poster:'images/posters/WSBUposter.jpg',
     stills:['images/stills/whatsitsbetweenusstill1.jpg','images/stills/whatsitsbetweenusstill2.jpg','images/stills/whatsitsbetweenusstill3.jpg']
   },
-  america250:{
+america250:{
     title:'America 250 - ABC News',
     director:'ABC News',
     role:'Assistant Camera',
     synopsis:'On this project I worked directly with a small ABC crew in shooting interviews and B Roll. I worked directly with the DP to shoot B Roll, change lens, and breakdown camera rigs.',
     website:'https://www.youtube.com/watch?v=HkCrhLf-ksY',
+    video:'https://www.youtube.com/watch?v=HkCrhLf-ksY',
     poster:'images/other/ABCNEWS/ABC1.jpg',
-    stills:['images/other/ABCNEWS/ABC1.jpg','images/other/ABCNEWS/ABC2.jpg','images/other/ABCNEWS/ABC3.jpg']
-  },
+},
   onsecondthought:{
     title:'On Second Thought',
     director:'Colton Younger',
@@ -295,9 +301,11 @@ function openModal(id){
   document.getElementById('modal-role').textContent=f.role;
   document.getElementById('modal-synopsis').textContent=f.synopsis;
 
-  const posterWrap=document.getElementById('modal-poster-wrap');
+const posterWrap=document.getElementById('modal-poster-wrap');
   if(f.poster){
-    if(f.website){
+    if(f.video){
+      posterWrap.innerHTML=`<div class="modal-video-thumb" onclick="window.open('${f.video}','_blank')"><img src="${f.poster}" alt="${f.title}"><div class="play-overlay"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>`;
+    } else if(f.website){
       posterWrap.innerHTML=`<a href="${f.website}" target="_blank" class="modal-poster-link"><img src="${f.poster}" alt="${f.title}"></a>`;
     } else {
       posterWrap.innerHTML=`<img src="${f.poster}" alt="${f.title}" class="modal-poster">`;
@@ -305,7 +313,6 @@ function openModal(id){
   } else {
     posterWrap.innerHTML=`<div class="modal-poster-placeholder">— poster coming soon —</div>`;
   }
-
   const stillsSec=document.getElementById('modal-stills-section');
   const stillsBox=document.getElementById('modal-stills');
   if(f.stills&&f.stills.length>0){
